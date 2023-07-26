@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "652862274449",
+    "firebase_url": "https://panchapatchi-calculator-default-rtdb.firebaseio.com",
+    "project_id": "panchapatchi-calculator",
+    "storage_bucket": "panchapatchi-calculator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652862274449:android:4c7d49967b078db673b830",
+        "android_client_info": {
+          "package_name": "com.example.panthapatchi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652862274449-j838ududsisp2d9qif1tbv27atkrgism.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbz8Fu4arsFBriQ2BntFXHzdwm7NrYjYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652862274449-j838ududsisp2d9qif1tbv27atkrgism.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
