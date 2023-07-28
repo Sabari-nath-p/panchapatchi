@@ -10,11 +10,13 @@ class homeScreen extends StatefulWidget {
   String sunrise;
   String phase;
   int saamam;
+  DateTime dateTime;
   homeScreen(
       {super.key,
       required this.phase,
       required this.saamam,
-      required this.sunrise});
+      required this.sunrise,
+      required this.dateTime});
 
   @override
   State<homeScreen> createState() =>
@@ -157,7 +159,7 @@ class _homeScreenState extends State<homeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final currentDate = DateTime.now();
+    final currentDate = widget.dateTime;
     final sun = DateTime.parse(sunrise);
     String sunvalue = DateFormat("hh:mm:kk").format(sun);
     String consultingtime = DateFormat("hh:mm:kk a").format(currentDate);
@@ -320,19 +322,19 @@ class _homeScreenState extends State<homeScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            valueBlock("assets/background/sun.png",
-                                "moon phase", "Waxing"),
-                            valueBlock("assets/background/sun.png", "Bootham",
-                                "$saavuhumor\n$thuyilhumor"),
+                            valueBlock("assets/background/night.png",
+                                "moon phase", widget.phase),
+                            valueBlock("assets/background/bootham.png",
+                                "Bootham", "$saavuhumor\n$thuyilhumor"),
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            valueBlock(
-                                "assets/background/sun.png", "Thuyil", thuyil),
-                            valueBlock(
-                                "assets/background/sun.png", "Saavu", saavu),
+                            valueBlock("assets/background/birdstate.png",
+                                "Thuyil", thuyil),
+                            valueBlock("assets/background/birdstate.png",
+                                "Saavu", saavu),
                           ],
                         )
                       ],

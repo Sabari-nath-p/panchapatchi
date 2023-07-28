@@ -43,36 +43,37 @@ class _windowSelectorState extends State<windowSelector> {
   String sunrisetime = "";
   String phase = "";
   bool isLoading = false;
-  loadLocation() async {
+  loadLocation(DateTime dt) async {
     final Response = await http
         .get(Uri.parse("https://api.seeip.org/geoip?callback=getgeoip"));
     if (Response.statusCode == 200) {
       String temp = Response.body.replaceAll("getgeoip({", "{");
       temp = temp.replaceAll(");", "");
-      //print(temp);
+
+      final formatter = DateFormat('yyyy-MM-dd');
+      String datesting = formatter.format(dt);
       var data = json.decode(temp);
       final sunrise = await http.get(Uri.parse(
-          "https://api.sunrise-sunset.org/json?lat=${data["latitude"]}&lng=${data["longitude"]}&formatted=0"));
-      //  print(sunrise.statusCode);
+          "https://api.sunrise-sunset.org/json?lat=${data["latitude"]}&lng=${data["longitude"]}&formatted=0&date=$datesting"));
+      print(sunrise.statusCode);
+      print(sunrise.body);
       if (sunrise.statusCode == 200) {
-        // print(sunrise.body);
         var sun = json.decode(sunrise.body);
         DateTime time = DateTime.parse(sun['results']['sunrise']);
         print(time.toLocal());
-
+        print(dt);
         for (int i = 1; i <= 10; i++) {
-          DateTime;
+          print(i);
           Duration duration = Duration(hours: 2, minutes: 22) * (i);
           DateTime secondtime = time.toLocal().add(duration);
-          if (time.toLocal().isBefore(DateTime.now()) &&
-              DateTime.now().isBefore(secondtime)) {
+          if (time.toLocal().isBefore(dt) && dt.isBefore(secondtime)) {
             setState(() {
               print("Current saamam is  : $i");
               sunrisetime = time.toLocal().toString();
               saamam = i;
             });
 
-            if (calculateMoonAge(DateTime.now()) < 14)
+            if (calculateMoonAge(dt) < 14)
               phase = "waxing";
             else {
               phase = ("waning");
@@ -89,7 +90,7 @@ class _windowSelectorState extends State<windowSelector> {
             break;
           }
         }
-      } else {
+
         setState(() {
           isLoading = false;
         });
@@ -162,11 +163,32 @@ class _windowSelectorState extends State<windowSelector> {
                             )),
                       ),
                       InkWell(
-                        onTap: () {
-                          setState(() {
-                            isLoading = true;
-                          });
-                          loadLocation();
+                        onTap: () async {
+                          DateTime actual = DateTime.now();
+
+                          final DateTime? pickedDate = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2023),
+                              //initialEntryMode: DatePickerEntryMode.input,
+                              lastDate: DateTime.now());
+
+                          if (pickedDate != null) {}
+
+                          final TimeOfDay? pickedTime = await showTimePicker(
+                              context: context, initialTime: TimeOfDay.now());
+
+                          if (pickedDate != null && pickedTime != null) {
+                            DateTime temp = DateTime(
+                              pickedDate.year,
+                              pickedDate.month,
+                              pickedDate.day,
+                              pickedTime.hour,
+                              pickedTime.minute,
+                            );
+
+                            onDateandtime(temp);
+                          }
                         },
                         child: Container(
                           margin: EdgeInsets.only(top: 40),
@@ -215,5 +237,12 @@ class _windowSelectorState extends State<windowSelector> {
         ],
       ),
     ));
+  }
+
+  onDateandtime(DateTime dt) {
+    setState(() {
+      isLoading = true;
+    });
+    loadLocation(dt);
   }
 }

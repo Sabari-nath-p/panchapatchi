@@ -67,7 +67,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 
 icons_launcher:
-  image_path: "assets/background/logo.png"
+  image_path: "assets/background/logo_new.jpeg"
   platforms:
     android:
       enable: true  
@@ -96,6 +96,10 @@ flutter:
     - assets/background/logo.png
     - assets/background/logo_trans.png
     - assets/background/rishi.png
+    - assets/background/night.png
+    - assets/background/bootham.png
+    - assets/background/birdstate.png
+    - assets/background/logo_new.jpeg
     
 
     

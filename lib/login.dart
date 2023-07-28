@@ -247,15 +247,21 @@ class _signupState extends State<signup> {
                       if (!isLogin)
                         InkWell(
                           onTap: () {
-                            if (nameText.text.isNotEmpty &&
-                                passwordText.text.isNotEmpty &&
-                                emailText.text.isNotEmpty) {
+                            if (nameText.text.length < 4) {
+                              Fluttertoast.showToast(
+                                  msg: "Please enter a valid name");
+                            } else if (passwordText.text.length < 8) {
+                              Fluttertoast.showToast(
+                                  msg:
+                                      "Please enter valid password \nMinimum 8 charater");
+                            } else if (!emailText.text.contains("@")) {
+                              Fluttertoast.showToast(
+                                  msg: "Please enter a valid email");
+                            } else {
                               tryReg(
                                   nameText.text.trim(),
                                   emailText.text.trim(),
                                   passwordText.text.trim());
-                            } else {
-                              Fluttertoast.showToast(msg: "Please fill");
                             }
                           },
                           child: Container(
