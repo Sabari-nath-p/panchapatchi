@@ -219,7 +219,7 @@ class _windowsHomeState extends State<windowsHome> {
     final currentDate = DateTime.now();
     double w = MediaQuery.of(context).size.width;
     double wc = 1536;
-    print("width");
+    
 
     final sun = DateTime.parse(sunrise);
     String sunvalue = DateFormat("hh:mm:kk").format(sun);
