@@ -8,7 +8,7 @@ import 'package:panthapatchi/DateDisplay.dart';
 import 'package:panthapatchi/homescreen.dart';
 import 'package:panthapatchi/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 class selectorDart extends StatefulWidget {
   const selectorDart({super.key});
@@ -236,11 +236,11 @@ class _selectorDartState extends State<selectorDart> {
               right: 80,
               child: InkWell(
                 onTap: () async {
-                  launchUrl(
+                  /*  launchUrl(
                       Uri.parse(
                         "https://www.mediafire.com/file/hnx7vdl62luos3m/setup.exe",
                       ),
-                      mode: LaunchMode.externalNonBrowserApplication);
+                      mode: LaunchMode.externalNonBrowserApplication);*/
                 },
                 child: Icon(
                   Icons.download,
