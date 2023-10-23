@@ -30,6 +30,13 @@
             {
               "client_id": "652862274449-j838ududsisp2d9qif1tbv27atkrgism.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "652862274449-qnmb7kqlmm1ogdfbob56nbght7a5cddn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.panthapatchi"
+              }
             }
           ]
         }

@@ -1,4 +1,4 @@
-package com.example.panthapatchi
+package com.app.panthapatchi
 
 import io.flutter.embedding.android.FlutterActivity
 
